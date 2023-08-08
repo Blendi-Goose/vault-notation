@@ -1,12 +1,13 @@
 import cellmachine as cm
 import sys
-
-fileCode = sys.argv[1]
+print("Hello, world!")
+fileCode = sys.argv[0]
+sys.stdout.write("Hello")
 vault = cm.import_level(fileCode)
 vaultArray = vault.cells.values()
 print(vaultArray[0])
 
-vaultNotation = sys.argv[2]
+vaultNotation = sys.argv[1]
 sections = vaultNotation.split(";")
 if sections[0] != "V4":
     raise Exception("How dare you send a notation without the Holy V4.")
