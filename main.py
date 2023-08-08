@@ -10,9 +10,8 @@ print(list(vaultArray))
 vaultNotation = sys.argv[2]
 sections = vaultNotation.split(";")
 if sections[0] != "V4":
-    print("How dare you send a notation without the Holy V4.")
+    raise ValueError("Invalid notation version.")
 ticks = sections[3].split(" ")
 for tick in ticks:
     cells = tick.split(".")
-
-print("test")
+print(cells)
