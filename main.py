@@ -22,3 +22,17 @@ corner2S = sections[2].split(",")
 corner2 = [int(corner2S[0]),int(corner2S[1])]
 if vault.outside_bounds(corner1) or vault.outside_bounds(corner2):
     raise Exception("Vault Access Point is outside bounds.")
+
+facing = 3
+onegapontop = 0
+if corner1[0] != corner2[0]:
+    onegapontop += 1
+    facing = 0
+    if corner1[0] < corner2[0]:
+        facing = 2
+if corner1[1] != corner2[1]:
+    onegapontop += 1
+    if corner1[1] < corner2[1]:
+        facing = 1
+if onegapontop == 2:
+    raise Exception("\033[1;31mNow hold your horses, buckaroo. Only one gaps allowed in this house.\033[0m\n")
