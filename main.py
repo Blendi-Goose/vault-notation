@@ -2,7 +2,6 @@ import cellmachine as cm
 import sys
 
 fileCode = sys.argv[1]
-print(fileCode)
 vault = cm.import_level(fileCode)
 
 vaultNotation = sys.argv[2]
