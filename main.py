@@ -4,8 +4,6 @@ import sys
 fileCode = sys.argv[1]
 print(fileCode)
 vault = cm.import_level(fileCode)
-vaultArray = vault.cells.values()
-print(list(vaultArray))
 
 vaultNotation = sys.argv[2]
 sections = vaultNotation.split(";")
