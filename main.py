@@ -1,8 +1,8 @@
 import cellmachine as cm
 import sys
-print("Hello, world!")
+
 fileCode = sys.argv[0]
-sys.stdout.write("Hello")
+print(fileCode)
 vault = cm.import_level(fileCode)
 vaultArray = vault.cells.values()
 print(vaultArray[0])
