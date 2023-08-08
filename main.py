@@ -18,8 +18,9 @@ for i in range(len(ticks)):
 print(cells)
 
 size = vault.size
-positionS = [sections[1], sections[2]]
-position = [int(positionS[0].split(",")),int(positionS[1].split(","))]
-if vault.outside_bounds(position[0]) or vault.outside_bounds(position[1]):
+corner1S = sections[1].split(",")
+corner1 = [int(corner1S[0]),int(corner1S[1])]
+corner2S = sections[2].split(",")
+corner2 = [int(corner2S[0]),int(corner2S[1])]
+if vault.outside_bounds(corner1) or vault.outside_bounds(corner2):
     raise Exception("Vault Access Point is outside bounds.")
-cell = vault.level.cells.get(position[1])
