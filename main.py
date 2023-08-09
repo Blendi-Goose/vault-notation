@@ -44,12 +44,13 @@ if onegapontop == 2:
     raise Exception("\033[1;31mOne gaps only. One gap on top. No resistance to this policy allowed.\033[0m\n")
 trashorpit = vault.cells.get(tuple(relative.move(facing, 2, tuple(corner2), 1, vault))).__class__ == cm.cells.trash.Trash
 print("Trash Vault: " + str(trashorpit))
-
+if trashorpit == False:
+    print("Pit vaults not supported yet.. good luck?")
 i = 0
 for tick in cells:
     print(tick) 
     i += 1
-thrust = length + 2
+thrust = length + 4
 lengthFuse = thrust * i
 endofFuse = ner.fuse(lengthFuse, relative.move(facing, 0, corner1, 1, vault), vault, facing)
 boundaries = ner.base_ner(facing, thrust + 1, endofFuse, i, vault)

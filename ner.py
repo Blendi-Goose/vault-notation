@@ -20,6 +20,7 @@ def fuse(length, firstPush, vault, facing):
 
 def base_ner(facing, thrust, pos, length, vault):
     # Bottom part of ner, clears waste gens
+    length = length + 1
     for i in range(thrust):
         cm.cells.Push(vault, tuple(pos))
         pos = relative.move(facing, 3, pos, 1, vault)
@@ -74,7 +75,7 @@ def customthrust(facing, thrustValues, moverValues, corners, vault):
     corner2 = corners[1]
     pos = corner2
     for i in range(len(thrustValues)):
-        for j in range(thrustValues[i] + 1):
+        for j in range(thrustValues[i] + 3):
             cm.cells.Generator(vault, tuple(pos), 2)
             pos = relative.move(facing, 2, pos, 1, vault)
         pos = corner2
@@ -82,9 +83,11 @@ def customthrust(facing, thrustValues, moverValues, corners, vault):
     pos = [corner2[0], corner1[1]]
     if facing == 0 or facing == 2:
         pos = [corner1[0], corner2[1]]
+    notmyfirsttime = False
     for i in range(len(thrustValues)):
-        if moverValues:
+        if moverValues[i-1] and notmyfirsttime:
             cm.cells.Mover(vault, tuple(pos), 2)
+        notmyfirsttime = True
         pos = relative.move(facing, 1, pos, 1, vault)
     print(cm.levelstring.v3.export_level(vault))
     return
