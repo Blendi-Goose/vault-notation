@@ -48,10 +48,10 @@ print("Trash Vault: " + str(trashorpit))
 i = 0
 j = [0 for i in range(len(cells))]
 for tick in cells:
-    i += 1
     print(tick)
     for cell in tick:
-        j[i] += 1
+        j[i] += 1    
+    i += 1
 thrust = length + 2
 lengthFuse = thrust * i
 endofFuse = funcs.fuse(lengthFuse, funcs.relativeMove(facing, 0, corner1, 1, vault), vault, facing)
