@@ -36,10 +36,24 @@ if corner1[1] != corner2[1]:
 print("0 is right, goes counterclockwise: " + facing)
 if onegapontop == 2:
     raise Exception("\033[1;31mNow hold your horses, buckaroo. Only one gaps allowed in this house.\033[0m\n")
+fuse(20)
+# FUSE FRAMEWORK
+# Will write over cells in the way of the fuse! Manual fixing may be necessary.
 
+def fuse(length, firstPush):
+    pos = firstPush
+    for i in range(length):
+        cm.cells.Push(vault, pos)
+        pos = relativeMove(2, pos, 1)
+        cm.cells.Immobile(vault, pos)
+        pos = relativeMove(0, pos, 2)
+        cm.cells.Immobile(vault, pos)
+        pos = relativeMove(3, pos, 1)
+        pos = relativeMove(2, pos, 1)
+        print(vault.export_level)
+    return
 
-
-def relativeMove(facing, direction, position, magnitude):
+def relativeMove(direction, position, magnitude):
     # Facing starts at right, direction starts at forward. Both go clockwise.
     newDirection = facing + direction
     if newDirection % 2 == 0:
