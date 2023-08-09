@@ -1,57 +1,82 @@
 import cellmachine as cm
-import funky as funcs
+import relative
+
+def fuse(length, firstPush, vault, facing):
+    pos = firstPush
+    for i in range(length):
+        cm.cells.Push(vault, tuple(pos))
+        pos = relative.move(facing, 3, pos, 1, vault)
+        cm.cells.Immobile(vault, tuple(pos))
+        pos = relative.move(facing, 1, pos, 2, vault)
+        cm.cells.Immobile(vault, tuple(pos))
+        pos = relative.move(facing, 3, pos, 1, vault)
+        pos = relative.move(facing, 0, pos, 1, vault)
+    pos = relative.move(facing, 2, pos, 1, vault)
+    pos = relative.move(facing, 1, pos, 2, vault)
+    cm.cells.Immobile(vault, tuple(pos))
+    pos = relative.move(facing, 3, pos, 2, vault)
+    pos = relative.move(facing, 0, pos, 1, vault)
+    return pos
+
 def base_ner(facing, thrust, pos, length, vault):
     # Bottom part of ner, clears waste gens
     for i in range(thrust):
         cm.cells.Push(vault, tuple(pos))
-        pos = funcs.relativeMove(facing, 3, pos, 1, vault)
+        pos = relative.move(facing, 3, pos, 1, vault)
         cm.cells.Trash(vault, tuple(pos))
-        pos = funcs.relativeMove(facing, 1, pos, 2, vault)
+        pos = relative.move(facing, 1, pos, 2, vault)
         cm.cells.Generator(vault, tuple(pos), 1)
-        pos = funcs.relativeMove(facing, 1, pos, 1, vault)
+        pos = relative.move(facing, 1, pos, 1, vault)
         cm.cells.Push(vault, tuple(pos))
-        pos = funcs.relativeMove(facing, 1, pos, 1, vault)
+        pos = relative.move(facing, 1, pos, 1, vault)
         cm.cells.Immobile(vault, tuple(pos))
-        pos = funcs.relativeMove(facing, 3, pos, 3, vault)
-        pos = funcs.relativeMove(facing, 0, pos, 1, vault)
+        pos = relative.move(facing, 3, pos, 3, vault)
+        pos = relative.move(facing, 0, pos, 1, vault)
     # Bottom wall
-    pos = funcs.relativeMove(facing, 2, pos, 1, vault)
-    pos = funcs.relativeMove(facing, 1, pos, 2, vault)
+    pos = relative.move(facing, 2, pos, 1, vault)
+    pos = relative.move(facing, 1, pos, 2, vault)
     for i in range(length - 2):
-        pos = funcs.relativeMove(facing, 1, pos, 1, vault)
+        pos = relative.move(facing, 1, pos, 1, vault)
         cm.cells.Immobile(vault, tuple(pos))
     # Right push and gen
-    pos = funcs.relativeMove(facing, 1, pos, 1, vault)
+    pos = relative.move(facing, 1, pos, 1, vault)
     for i in range(thrust):
-        pos = funcs.relativeMove(facing, 0, pos, 1, vault)
+        pos = relative.move(facing, 0, pos, 1, vault)
         cm.cells.Push(vault, tuple(pos))
-        pos = funcs.relativeMove(facing, 3, pos, 1, vault)
+        pos = relative.move(facing, 3, pos, 1, vault)
         cm.cells.Generator(vault, tuple(pos), 1)
-        pos = funcs.relativeMove(facing, 1, pos, 1, vault)
+        pos = relative.move(facing, 1, pos, 1, vault)
     #Final Array
-    pos = funcs.relativeMove(facing, 3, pos, 1, vault)
+    pos = relative.move(facing, 3, pos, 1, vault)
     for i in range(thrust):
         for j in range(length):
-            pos = funcs.relativeMove(facing, 3, pos, 1, vault)
+            pos = relative.move(facing, 3, pos, 1, vault)
             cm.cells.Push(vault, tuple(pos))
-        pos = funcs.relativeMove(facing, 1, pos, length, vault)
-        pos = funcs.relativeMove(facing, 2, pos, 1, vault)
-    pos = funcs.relativeMove(facing, 0, pos, 1, vault)
-    pos = funcs.relativeMove(facing, 3, pos, 1, vault)
+        pos = relative.move(facing, 1, pos, length, vault)
+        pos = relative.move(facing, 2, pos, 1, vault)
+    pos = relative.move(facing, 0, pos, 1, vault)
+    pos = relative.move(facing, 3, pos, 1, vault)
     corner1 = pos
-    pos = funcs.relativeMove(facing, 0, pos, thrust, vault)
-    pos = funcs.relativeMove(facing, 3, pos, length, vault)
-    pos = funcs.relativeMove(facing, 1, pos, 1, vault)
-    pos = funcs.relativeMove(facing, 2, pos, 1, vault)
+    pos = relative.move(facing, 0, pos, thrust, vault)
+    pos = relative.move(facing, 3, pos, length, vault)
+    pos = relative.move(facing, 1, pos, 1, vault)
+    pos = relative.move(facing, 2, pos, 1, vault)
     corner2 = pos
-    pos = funcs.relativeMove(facing, 3, pos, 1, vault)
-    pos = funcs.relativeMove(facing, 0, pos, 1, vault)
+    pos = relative.move(facing, 3, pos, 1, vault)
+    pos = relative.move(facing, 0, pos, 1, vault)
     for i in range(thrust):
-        pos = funcs.relativeMove(facing, 2, pos, 1, vault)
+        pos = relative.move(facing, 2, pos, 1, vault)
         cm.cells.Trash(vault, tuple(pos))
     print(cm.levelstring.v3.export_level(vault))
     return [corner1, corner2]
 
-    def customthrust(thrustValues, corners):
-        corner1 = corners[0]
-        return
+def customthrust(facing, thrustValues, corners, vault):
+    corner2 = corners[1]
+    pos = corner2
+    for i in range(len(thrustValues)):
+        for j in range(thrustValues[i]):
+            pos = relative.move(facing, 0, pos, 1, vault)
+            cm.cells.Generator(vault, tuple(pos), 2)
+        pos = corner2
+        pos = relative.move(facing, 3, pos, 1, vault)
+    return
