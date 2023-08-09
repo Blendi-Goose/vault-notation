@@ -55,4 +55,5 @@ for tick in cells:
 thrust = length + 2
 lengthFuse = thrust * i
 endofFuse = funcs.fuse(lengthFuse, funcs.relativeMove(facing, 0, corner1, 1, vault), vault, facing)
-boundaries = ner.ner(facing, thrust, endofFuse, i, vault)
+boundaries = ner.base_ner(facing, thrust, endofFuse, i, vault)
+ner.custom

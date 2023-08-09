@@ -1,6 +1,6 @@
 import cellmachine as cm
 import funky as funcs
-def ner(facing, thrust, pos, length, vault):
+def base_ner(facing, thrust, pos, length, vault):
     # Bottom part of ner, clears waste gens
     for i in range(thrust):
         cm.cells.Push(vault, tuple(pos))
@@ -51,3 +51,7 @@ def ner(facing, thrust, pos, length, vault):
         cm.cells.Trash(vault, tuple(pos))
     print(cm.levelstring.v3.export_level(vault))
     return [corner1, corner2]
+
+    def customthrust(thrustValues, corners):
+        corner1 = corners[0]
+        return
