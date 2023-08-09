@@ -4,14 +4,15 @@ def fuse(length, firstPush, vault, facing):
     pos = firstPush
     for i in range(length):
         cm.cells.Push(vault, tuple(pos))
-        pos = relativeMove(facing, 2, pos, 1, vault)
+        pos = relativeMove(facing, 3, pos, 1, vault)
         cm.cells.Immobile(vault, tuple(pos))
-        pos = relativeMove(facing, 0, pos, 2, vault)
+        pos = relativeMove(facing, 1, pos, 2, vault)
         cm.cells.Immobile(vault, tuple(pos))
         pos = relativeMove(facing, 3, pos, 1, vault)
-        pos = relativeMove(facing, 2, pos, 1, vault)
-        print(cm.levelstring.v3.export_level(vault))
+        pos = relativeMove(facing, 0, pos, 1, vault)
+    print(cm.levelstring.v3.export_level(vault))
     return
+
 
 def relativeMove(facing, direction, position, magnitude, vault):
     # Facing starts at right, direction starts at forward. Both go clockwise.
