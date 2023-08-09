@@ -41,16 +41,13 @@ if corner1[1] != corner2[1]:
         facing = 1
 print("0 is right, goes counterclockwise: " + str(facing))
 if onegapontop == 2:
-    raise Exception("\033[1;31mNow hold your horses, buckaroo. Only one gaps allowed in this house.\033[0m\n")
+    raise Exception("\033[1;31mOne gaps only. One gap on top. No resistance to this policy allowed.\033[0m\n")
 trashorpit = vault.cells.get(tuple(relative.move(facing, 2, tuple(corner2), 1, vault))).__class__ == cm.cells.trash.Trash
 print("Trash Vault: " + str(trashorpit))
 
 i = 0
-j = [0 for i in range(len(cells))]
 for tick in cells:
-    print(tick)
-    for cell in tick:
-        j[i] += 1    
+    print(tick) 
     i += 1
 thrust = length + 2
 lengthFuse = thrust * i
@@ -58,9 +55,11 @@ endofFuse = ner.fuse(lengthFuse, relative.move(facing, 0, corner1, 1, vault), va
 boundaries = ner.base_ner(facing, thrust + 1, endofFuse, i, vault)
 thrustValues = [0 for i in range(len(cells))]
 count = 0
+moverValues = [False for i in range(len(cells))]
 for i in range(len(thrustValues)):
     for cell in cells[i]:
         count += 1
+        moverValues[i] = cell[-1] == '+'
     thrustValues[i] = count
     count = 0
 ner.customthrust(facing, thrustValues, boundaries, vault)
