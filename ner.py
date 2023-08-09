@@ -29,8 +29,8 @@ def ner(facing, thrust, pos, length, vault):
         pos = funcs.relativeMove(facing, 1, pos, 1, vault)
     cm.cells.Generator(vault, tuple(pos), 1)
     corner1 = pos
-    pos = funcs.relativeMove(facing, 0, pos, thrust, vault)
-    pos = funcs.relativeMove(facing, 1, pos, length, vault)
+    #pos = funcs.relativeMove(facing, 0, pos, thrust, vault)
+    #pos = funcs.relativeMove(facing, 1, pos, length, vault)
     cm.cells.Generator(vault, tuple(pos), 1)
     corner2 = pos
     print(cm.levelstring.v3.export_level(vault))
