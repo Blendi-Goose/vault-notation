@@ -55,6 +55,7 @@ if trashorpit:
         for cell in tick:
             j += 1
     thrust = j/i + 2
+    thrust = int(thrust)
     lengthFuse = thrust * i
 else:
     raise Exception("Trash vaults are the only currently supported vault. Sorry!")
