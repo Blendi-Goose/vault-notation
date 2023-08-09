@@ -57,11 +57,13 @@ def base_ner(facing, thrust, pos, length, vault):
     pos = relative.move(facing, 0, pos, 1, vault)
     pos = relative.move(facing, 3, pos, 1, vault)
     corner1 = pos
+    cm.cells.Immobile(vault, tuple(pos))
     pos = relative.move(facing, 0, pos, thrust, vault)
     pos = relative.move(facing, 3, pos, length, vault)
     pos = relative.move(facing, 1, pos, 1, vault)
     pos = relative.move(facing, 2, pos, 1, vault)
     corner2 = pos
+    cm.cells.Immobile(vault, tuple(pos))
     pos = relative.move(facing, 3, pos, 1, vault)
     pos = relative.move(facing, 0, pos, 1, vault)
     for i in range(thrust):
