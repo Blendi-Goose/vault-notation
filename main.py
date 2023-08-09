@@ -42,7 +42,18 @@ print("0 is right, goes counterclockwise: " + str(facing))
 if onegapontop == 2:
     raise Exception("\033[1;31mNow hold your horses, buckaroo. Only one gaps allowed in this house.\033[0m\n")
 trashorpit = vault.cells.get(tuple(funcs.relativeMove(facing, 2, tuple(corner2), 1, vault))).__class__ == cm.cells.trash.Trash
-print(trashorpit)
+print("Trash Vault: " + str(trashorpit))
 
-funcs.fuse(20, funcs.relativeMove(facing, 0, corner1, 1, vault), vault, facing)
+i = 0
+j = 0
+if trashorpit:
+    for tick in cells:
+        i += 1
+        for cell in tick:
+            j += 1
+    thrust = j/i + 2
+    lengthFuse = thrust * i
+else:
+    raise Exception("Trash vaults are the only currently supported vault. Sorry!")
+endofFuse = funcs.fuse(lengthFuse, funcs.relativeMove(facing, 0, corner1, 1, vault), vault, facing)
 

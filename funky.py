@@ -11,7 +11,7 @@ def fuse(length, firstPush, vault, facing):
         pos = relativeMove(facing, 3, pos, 1, vault)
         pos = relativeMove(facing, 0, pos, 1, vault)
     print(cm.levelstring.v3.export_level(vault))
-    return
+    return pos
 
 
 def relativeMove(facing, direction, position, magnitude, vault):
@@ -30,3 +30,8 @@ def relativeMove(facing, direction, position, magnitude, vault):
     if vault.outside_bounds(newposition):
         raise Exception("Area too small for proper ner to be made, please expand.")
     return newposition
+
+def relativeRotate(facing, direction, position, vault):
+    vector = facing + direction
+    vault.cells.get(position).rotate(vector)
+    return
