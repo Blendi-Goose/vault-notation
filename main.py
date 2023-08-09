@@ -62,4 +62,4 @@ for i in range(len(thrustValues)):
         moverValues[i] = cell[-1] == '+'
     thrustValues[i] = count
     count = 0
-ner.customthrust(facing, thrustValues, boundaries, vault)
+ner.customthrust(facing, thrustValues, moverValues, boundaries, vault)
