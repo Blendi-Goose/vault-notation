@@ -60,5 +60,4 @@ if trashorpit:
 else:
     raise Exception("Trash vaults are the only currently supported vault. Sorry!")
 endofFuse = funcs.fuse(lengthFuse, funcs.relativeMove(facing, 0, corner1, 1, vault), vault, facing)
-endofFuse = funcs.relativeMove(facing, 0, endofFuse, 1, vault)
-ner.ner(facing, thrust, endofFuse, i, vault)
+ner.ner(facing, 5, endofFuse, 10, vault)
