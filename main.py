@@ -50,10 +50,10 @@ j = 0
 if trashorpit:
     for tick in cells:
         i += 1
+        print(i)
         print(tick)
         for cell in tick:
             j += 1
-            print(j)
     thrust = length + 2
     lengthFuse = thrust * i
 else:
