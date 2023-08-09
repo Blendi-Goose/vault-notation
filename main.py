@@ -10,8 +10,9 @@ vaultNotation = sys.argv[2]
 sections = vaultNotation.split(";")
 if sections[0] != "V4":
     raise ValueError("Invalid notation version.")
-cells = {}
+
 ticks = sections[3].split(" ")
+cells = [0 for i in range(len(ticks))]
 for i in range(len(ticks)):
     cells[i] = ticks[i].split(".")
 print(cells)
