@@ -10,7 +10,7 @@ def fuse(length, firstPush, vault, facing):
         cm.cells.Immobile(vault, tuple(pos))
         pos = relativeMove(facing, 3, pos, 1, vault)
         pos = relativeMove(facing, 2, pos, 1, vault)
-        print(cm.export_level(vault))
+        print(cm.levelstring.v3.export_level(vault))
     return
 
 def relativeMove(facing, direction, position, magnitude, vault):
