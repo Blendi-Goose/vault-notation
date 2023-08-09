@@ -1,6 +1,7 @@
 import cellmachine as cm
 import sys
 import funky as funcs
+import ner
 
 fileCode = sys.argv[1]
 vault = cm.import_level(fileCode)
@@ -56,4 +57,5 @@ if trashorpit:
 else:
     raise Exception("Trash vaults are the only currently supported vault. Sorry!")
 endofFuse = funcs.fuse(lengthFuse, funcs.relativeMove(facing, 0, corner1, 1, vault), vault, facing)
-
+endofFuse = funcs.relativeMove(facing, 0, endofFuse, 1, vault)
+ner.ner(facing, thrust, endofFuse, i, vault)
