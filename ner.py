@@ -48,5 +48,5 @@ def ner(facing, thrust, pos, length, vault):
     for i in range(thrust):
         pos = funcs.relativeMove(facing, 3, pos, 1, vault)
         cm.cells.Trash(vault, tuple(pos))
-    print(cm.levelstring.v3.export_level(vault))
+    print("export test")
     return [corner1, corner2]
