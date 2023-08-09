@@ -67,7 +67,6 @@ def base_ner(facing, thrust, pos, length, vault):
     for i in range(thrust):
         pos = relative.move(facing, 2, pos, 1, vault)
         cm.cells.Trash(vault, tuple(pos))
-    print(cm.levelstring.v3.export_level(vault))
     return [corner1, corner2]
 
 def customthrust(facing, thrustValues, corners, vault):
@@ -79,4 +78,5 @@ def customthrust(facing, thrustValues, corners, vault):
             cm.cells.Generator(vault, tuple(pos), 2)
         pos = corner2
         pos = relative.move(facing, 3, pos, 1, vault)
+    print(cm.levelstring.v3.export_level(vault))
     return
