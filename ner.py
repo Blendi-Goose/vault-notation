@@ -74,9 +74,9 @@ def customthrust(facing, thrustValues, corners, vault):
     pos = corner2
     for i in range(len(thrustValues)):
         for j in range(thrustValues[i]):
-            pos = relative.move(facing, 0, pos, 1, vault)
+            pos = relative.move(facing, 2, pos, 1, vault)
             cm.cells.Generator(vault, tuple(pos), 2)
         pos = corner2
-        pos = relative.move(facing, 3, pos, 1, vault)
+        pos = relative.move(facing, 1, pos, i+1, vault)
     print(cm.levelstring.v3.export_level(vault))
     return
