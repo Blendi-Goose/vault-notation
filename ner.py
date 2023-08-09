@@ -21,6 +21,7 @@ def ner(facing, thrust, pos, length, vault):
         pos = funcs.relativeMove(facing, 1, pos, 1, vault)
         cm.cells.Immobile(vault, tuple(pos))
     # Right push and gen
+    pos = funcs.relativeMove(facing, 3, pos, 1, vault)
     for i in range(thrust):
         pos = funcs.relativeMove(facing, 0, pos, 1, vault)
         cm.cells.Push(vault, tuple(pos))
@@ -43,5 +44,9 @@ def ner(facing, thrust, pos, length, vault):
     pos = funcs.relativeMove(facing, 1, pos, 1, vault)
     pos = funcs.relativeMove(facing, 2, pos, 1, vault)
     corner2 = pos
+    pos = funcs.relativeMove(facing, 3, pos, 1, vault)
+    for i in range(height):
+        pos = funcs.relativeMove(facing, 3, pos, 1, vault)
+        cm.cells.Trash(vault, tuple(pos))
     print(cm.levelstring.v3.export_level(vault))
     return [corner1, corner2]
