@@ -33,7 +33,7 @@ if corner1[1] != corner2[1]:
     onegapontop += 1
     if corner1[1] < corner2[1]:
         facing = 1
-print("0 is right, goes counterclockwise: " + facing)
+print("0 is right, goes counterclockwise: " + str(facing))
 if onegapontop == 2:
     raise Exception("\033[1;31mNow hold your horses, buckaroo. Only one gaps allowed in this house.\033[0m\n")
 fuse(20)
