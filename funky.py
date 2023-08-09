@@ -3,11 +3,11 @@ import cellmachine as cm
 def fuse(length, firstPush, vault, facing):
     pos = firstPush
     for i in range(length):
-        cm.cells.Push(vault, pos)
+        cm.cells.Push(vault, tuple(pos))
         pos = relativeMove(facing, 2, pos, 1, vault)
-        cm.cells.Immobile(vault, pos)
+        cm.cells.Immobile(vault, tuple(pos))
         pos = relativeMove(facing, 0, pos, 2, vault)
-        cm.cells.Immobile(vault, pos)
+        cm.cells.Immobile(vault, tuple(pos))
         pos = relativeMove(facing, 3, pos, 1, vault)
         pos = relativeMove(facing, 2, pos, 1, vault)
         print(vault.export_level)
