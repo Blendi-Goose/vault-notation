@@ -28,12 +28,12 @@ def ner(facing, thrust, pos, length, vault):
         cm.cells.Generator(vault, tuple(pos), 1)
         pos = funcs.relativeMove(facing, 1, pos, 1, vault)
     #Final Array
-    pos = funcs.relativeMove(facing, 1, pos, 2, vault)
+    pos = funcs.relativeMove(facing, 3, pos, 2, vault)
     for i in range(thrust):
         for j in range(length):
-            pos = funcs.relativeMove(facing, 1, pos, 1, vault)
+            pos = funcs.relativeMove(facing, 3, pos, 1, vault)
             cm.cells.Push(vault, tuple(pos))
-        pos = funcs.relativeMove(facing, 3, pos, length, vault)
+        pos = funcs.relativeMove(facing, 1, pos, length, vault)
         pos = funcs.relativeMove(facing, 2, pos, 1, vault)
     pos = funcs.relativeMove(facing, 0, pos, 1, vault)
     cm.cells.Generator(vault, tuple(pos), 1)
