@@ -28,15 +28,20 @@ onegapontop = 0
 if corner1[0] != corner2[0]:
     onegapontop += 1
     facing = 0
+    length = corner1[0] - corner2[0]
     if corner1[0] < corner2[0]:
         facing = 2
+        length = corner2[0] - corner1[0] 
 if corner1[1] != corner2[1]:
     onegapontop += 1
+    length = corner1[1] - corner2[1]
     if corner1[1] < corner2[1]:
+        length = corner2[1] - corner1[1] 
         facing = 1
 print("0 is right, goes counterclockwise: " + str(facing))
 if onegapontop == 2:
     raise Exception("\033[1;31mNow hold your horses, buckaroo. Only one gaps allowed in this house.\033[0m\n")
+trashorpit = vault.cells.get(funcs.relativeMove(facing, 2, corner2, 1, vault)) == cm.cells.trash
 
-funcs.fuse(20, corner1, vault, facing)
+funcs.fuse(20, funcs.relativeMove(facing, 0, corner1, 1, vault), vault, facing)
 
