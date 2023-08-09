@@ -53,8 +53,8 @@ if trashorpit:
         print(tick)
         for cell in tick:
             j += 1
-    thrust = j/i + 2
-    thrust = int(thrust)
+            print(j)
+    thrust = length + 2
     lengthFuse = thrust * i
 else:
     raise Exception("Trash vaults are the only currently supported vault. Sorry!")
