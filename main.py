@@ -50,6 +50,7 @@ j = 0
 if trashorpit:
     for tick in cells:
         i += 1
+        print(tick)
         for cell in tick:
             j += 1
     thrust = j/i + 2
