@@ -1,3 +1,4 @@
+import sys
 def move(facing, direction, position, magnitude, vault):
     # Facing starts at right, direction starts at forward. Both go clockwise.
     newDirection = facing + direction
@@ -14,7 +15,8 @@ def move(facing, direction, position, magnitude, vault):
         else:
             newposition = [position[0], position[1] + magnitude]
     if vault.outside_bounds(newposition):
-        raise Exception("Area too small for proper ner to be made, please expand. Position:", newposition)
+        print("\033[1;31mArea too small for solve: Please center the vault and/or increase level size.\033[0m\n")
+        sys.exit()
     return newposition
 
 def rotate(facing, direction, position, vault):

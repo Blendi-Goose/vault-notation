@@ -1,40 +1,29 @@
-import cellmachine as cm
-import relative
+import cellmachine.cells as cm
+import sys
 def interpret(facing, shorthand, position, vault):
-    if shorthand == "rg":
-        cm.cells.Generator(vault, tuple(position), 0)
-        return
-    if shorthand == "dg":
-        cm.cells.Generator(vault, tuple(position), 1)
-        return
-    if shorthand == "lg":
-        cm.cells.Generator(vault, tuple(position), 2)
-        return
-    if shorthand == "ug":
-        cm.cells.Generator(vault, tuple(position), 3)
-        return
-    if shorthand == "rm":
-        cm.cells.Mover(vault, tuple(position), 0)
-        return
-    if shorthand == "dm":
-        cm.cells.Mover(vault, tuple(position), 1)
-        return
-    if shorthand == "lm":
-        cm.cells.Mover(vault, tuple(position), 2)
-        return
-    if shorthand == "um":
-        cm.cells.Mover(vault, tuple(position), 3)
-        return
-    if shorthand == "cw":
-        cm.cells.CW(vault, tuple(position))
-        return
-    if shorthand == "cc":
-        cm.cells.CCW(vault, tuple(position))
-        return
-    if shorthand == "0":
-        cm.cells.Push(vault, tuple(position))
-        return
-    if shorthand == "s":
-        cm.cells.Slide(vault, tuple(position), facing)
-        return
-    raise Exception("Invalid data.")
+    notation = ["rm","dm","lm","um","rg","dg","lg","ug","cw","cc","0","s"]
+    cell_list = [cm.CW,cm.CCW,cm.Push,cm.Slide]
+    rotation = [0,1,2,3,0,1,2,3,4,4,4,4]
+    if facing == 0 or 1:
+        notfacing = facing + 2
+    else:
+        notfacing = facing - 2
+    for i, name in enumerate(notation):
+        if shorthand == name:
+            if i <= 3:
+                cm.Mover(vault, tuple(position), i)
+            elif i <= 7:
+                cm.Generator(vault, tuple(position), i-4)
+            else:
+                cell_list[i-8](vault, tuple(position))
+            if rotation[i] == notfacing:
+                if i < 3:
+                    return [True, False]
+                else:
+                    return [True, True]
+            else:
+                return [False, False]
+    if shorthand == "no":
+        return [False, False]
+    print("\033[1;31mInvalid cell name.\033[0m\n")
+    sys.exit()
