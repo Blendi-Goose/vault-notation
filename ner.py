@@ -91,3 +91,7 @@ def customthrust(facing, thrustValues, moverValues, corners, vault):
         pos = relative.move(facing, 1, pos, 1, vault)
     print(cm.levelstring.v3.export_level(vault))
     return
+
+def fill(facing, thrust, cells, fusepos, vault):
+    fusepos[0]
+    return
