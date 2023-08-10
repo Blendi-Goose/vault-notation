@@ -93,5 +93,7 @@ def customthrust(facing, thrustValues, moverValues, corners, vault):
     return
 
 def fill(facing, thrust, cells, fusepos, vault):
-    fusepos[0]
+    start = fusepos[0]
+    pos = start
+    relative.move(facing, 0, pos, )
     return

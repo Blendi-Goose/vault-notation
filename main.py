@@ -65,4 +65,4 @@ for i in range(len(thrustValues)):
     thrustValues[i] = count
     count = 0
 ner.customthrust(facing, thrustValues, moverValues, boundaries, vault)
-ner.fill(facing, thrust, cells, [relative.move(facing, 0, tuple(corner1), 1, vault), endofFuse], vault)
+ner.fill(facing, thrust, cells, [corner1, endofFuse], vault)
