@@ -33,10 +33,7 @@ def interpret(facing, shorthand, position, vault):
     if shorthand == "0":
         cm.cells.Push(vault, tuple(position))
         return
-    if shorthand == "vs":
-        cm.cells.Slide(vault, tuple(position), 1 + facing)
-        return
-    if shorthand == "hs":
-        cm.cells.Slide(vault, tuple(position), 0 + facing)
+    if shorthand == "s":
+        cm.cells.Slide(vault, tuple(position), facing)
         return
     raise Exception("Invalid data.")
