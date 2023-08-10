@@ -27,7 +27,7 @@ def base_ner(facing, thrust, pos, length, vault):
         pos = relative.move(facing, 3, pos, 1, vault)
         cm.cells.Trash(vault, tuple(pos))
         pos = relative.move(facing, 1, pos, 2, vault)
-        cm.cells.Generator(vault, tuple(pos), 1 + facing)
+        cm.cells.Generator(vault, tuple(pos), relative.rotateval(facing, 1))
         pos = relative.move(facing, 1, pos, 1, vault)
         cm.cells.Push(vault, tuple(pos))
         pos = relative.move(facing, 1, pos, 1, vault)
@@ -46,7 +46,7 @@ def base_ner(facing, thrust, pos, length, vault):
         pos = relative.move(facing, 0, pos, 1, vault)
         cm.cells.Push(vault, tuple(pos))
         pos = relative.move(facing, 3, pos, 1, vault)
-        cm.cells.Generator(vault, tuple(pos), 1 + facing)
+        cm.cells.Generator(vault, tuple(pos), relative.rotateval(facing, 1))
         pos = relative.move(facing, 1, pos, 1, vault)
     #Final Array
     pos = relative.move(facing, 3, pos, 1, vault)
@@ -77,7 +77,7 @@ def customthrust(facing, thrustValues, moverValues, corners, vault):
     pos = corner2
     for i in range(len(thrustValues)):
         for j in range(thrustValues[i] + 3):
-            cm.cells.Generator(vault, tuple(pos), 2 + facing)
+            cm.cells.Generator(vault, tuple(pos), relative.rotateval(facing, 2))
             pos = relative.move(facing, 2, pos, 1, vault)
         pos = corner2
         pos = relative.move(facing, 1, pos, i+1, vault)
@@ -87,7 +87,7 @@ def customthrust(facing, thrustValues, moverValues, corners, vault):
     notmyfirsttime = False
     for i in range(len(thrustValues)):
         if moverValues[i-1] and notmyfirsttime:
-            cm.cells.Mover(vault, tuple(pos), 2 + facing)
+            cm.cells.Mover(vault, tuple(pos), relative.rotateval(facing, 2))
         notmyfirsttime = True
         pos = relative.move(facing, 1, pos, 1, vault)
     return

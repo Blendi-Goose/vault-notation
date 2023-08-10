@@ -41,7 +41,7 @@ if corner1[1] != corner2[1]:
     if corner1[1] > corner2[1]:
         length =  corner1[1] - corner2[1]
         facing = 1
-print("0 is right, goes clockwise: " + str(facing))
+print("0 is right, goes clockwise: ",facing)
 if onegapontop == 2:
     raise Exception("\033[1;31mOne gaps only. One gap on top. No resistance to this policy allowed.\033[0m\n")
 trashorpit = vault.cells.get(tuple(relative.move(facing, 2, tuple(corner2), 1, vault))).__class__ == cm.cells.trash.Trash
@@ -56,6 +56,7 @@ thrust = length + 4
 lengthFuse = thrust * i
 endofFuse = ner.fuse(lengthFuse, relative.move(facing, 0, corner1, 1, vault), vault, facing)
 boundaries = ner.base_ner(facing, thrust + 1, endofFuse, i, vault)
+print(cm.levelstring.v2.export_level(vault))
 thrustValues = [0 for i in range(len(cells))]
 count = 0
 moverValues = [False for i in range(len(cells))]
@@ -69,8 +70,8 @@ for i in range(len(thrustValues)):
     thrustValues[i] = count
     count = 0
 ner.customthrust(facing, thrustValues, moverValues, boundaries, vault)
+print(cm.levelstring.v2.export_level(vault))
 ner.fill(facing, thrust, cells, [corner1, endofFuse], vault)
-
 # ALWAYS LEAVE AT BOTTOM
 endTime = time.time() - start_time
 print("Solve took ", endTime ,"s to complete")

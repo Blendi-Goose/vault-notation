@@ -14,10 +14,16 @@ def move(facing, direction, position, magnitude, vault):
         else:
             newposition = [position[0], position[1] - magnitude]
     if vault.outside_bounds(newposition):
-        raise Exception("Area too small for proper ner to be made, please expand.")
+        raise Exception("Area too small for proper ner to be made, please expand. Position:", newposition)
     return newposition
 
 def rotate(facing, direction, position, vault):
     vector = facing + direction
     vault.cells.get(position).rotate(vector)
     return
+
+def rotateval(facing, direction):
+    newdir = facing + direction
+    if newdir <= 4:
+        newdir = newdir - 4
+    return newdir
