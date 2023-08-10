@@ -60,17 +60,18 @@ thrustValues = [0 for i in range(len(cells))]
 count = 0
 moverValues = [False for i in range(len(cells))]
 for i in range(len(thrustValues)):
-    for cell in cells[i]:
+    for j in range(len(cells[i])):
         count += 1
-        moverValues[i] = cell[-1] == '+'
-        cell.replace('+', '')
+        cell = cells[i][j]
+        if cell[-1] == '+':
+            moverValues[i] = True
+            cells[i][j] = cell[:-1]
     thrustValues[i] = count
     count = 0
 ner.customthrust(facing, thrustValues, moverValues, boundaries, vault)
 ner.fill(facing, thrust, cells, [corner1, endofFuse], vault)
 
 endTime = time.time() - start_time
-
 print("Solve took ", endTime ,"s to complete")
 print(cm.levelstring.v3.export_level(vault))
-print("Exporting took ", time.time() - endTime, "s to complete")
+print("Exporting took ", time.time() - start_time, "s to complete")
