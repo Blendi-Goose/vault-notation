@@ -71,7 +71,8 @@ for i in range(len(thrustValues)):
 ner.customthrust(facing, thrustValues, moverValues, boundaries, vault)
 ner.fill(facing, thrust, cells, [corner1, endofFuse], vault)
 
+# ALWAYS LEAVE AT BOTTOM
 endTime = time.time() - start_time
 print("Solve took ", endTime ,"s to complete")
 print(cm.levelstring.v3.export_level(vault))
-print("Exporting took ", time.time() - start_time, "s to complete")
+print("Exporting took ", time.time() - start_time - endTime, "s to complete")
