@@ -37,11 +37,11 @@ if corner1[0] != corner2[0]:
         length = corner2[0] - corner1[0] 
 if corner1[1] != corner2[1]:
     onegapontop += 1
-    length = corner1[1] - corner2[1]
-    if corner1[1] < corner2[1]:
-        length = corner2[1] - corner1[1] 
+    length = corner2[1] - corner1[1]
+    if corner1[1] > corner2[1]:
+        length =  corner1[1] - corner2[1]
         facing = 1
-print("0 is right, goes counterclockwise: " + str(facing))
+print("0 is right, goes clockwise: " + str(facing))
 if onegapontop == 2:
     raise Exception("\033[1;31mOne gaps only. One gap on top. No resistance to this policy allowed.\033[0m\n")
 trashorpit = vault.cells.get(tuple(relative.move(facing, 2, tuple(corner2), 1, vault))).__class__ == cm.cells.trash.Trash

@@ -1,6 +1,8 @@
 def move(facing, direction, position, magnitude, vault):
     # Facing starts at right, direction starts at forward. Both go clockwise.
     newDirection = facing + direction
+    if newDirection <= 4:
+        newDirection -= 4
     if newDirection % 2 == 0:
         if newDirection == 0:
             newposition = [position[0] + magnitude, position[1]]
