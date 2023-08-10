@@ -98,7 +98,6 @@ def fill(facing, thrust, cells, fusepos, vault):
     pos = relative.move(facing, 0, pos, thrust - 2, vault)
     for tick in cells:
         for cell in tick:
-            print(cell)
             list.interpret(facing, cell, pos, vault)
             pos = relative.move(facing, 0, pos, 1, vault)
         pos = relative.move(facing, 0, pos, thrust - 3, vault)
