@@ -2,6 +2,8 @@ import cellmachine as cm
 import sys
 import relative
 import ner
+import time
+start_time = time.time()
 
 fileCode = sys.argv[1]
 vault = cm.import_level(fileCode)
@@ -66,3 +68,9 @@ for i in range(len(thrustValues)):
     count = 0
 ner.customthrust(facing, thrustValues, moverValues, boundaries, vault)
 ner.fill(facing, thrust, cells, [corner1, endofFuse], vault)
+
+endTime = time.time() - start_time
+
+print("Solve took ", endTime ,"s to complete")
+print(cm.levelstring.v3.export_level(vault))
+print("Exporting took ", time.time() - endTime, "s to complete")
