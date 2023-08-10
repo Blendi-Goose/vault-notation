@@ -2,28 +2,28 @@ import cellmachine as cm
 import relative
 def interpret(facing, shorthand, position, vault):
     if shorthand == "rg":
-        cm.cells.Generator(vault, tuple(position), facing)
+        cm.cells.Generator(vault, tuple(position), 0)
         return
     if shorthand == "dg":
-        cm.cells.Generator(vault, tuple(position), relative.rotateval(facing, 1))
+        cm.cells.Generator(vault, tuple(position), 1)
         return
     if shorthand == "lg":
-        cm.cells.Generator(vault, tuple(position), relative.rotateval(facing, 2))
+        cm.cells.Generator(vault, tuple(position), 2)
         return
     if shorthand == "ug":
-        cm.cells.Generator(vault, tuple(position), relative.rotateval(facing, 3))
+        cm.cells.Generator(vault, tuple(position), 3)
         return
     if shorthand == "rm":
-        cm.cells.Mover(vault, tuple(position), facing)
+        cm.cells.Mover(vault, tuple(position), 0)
         return
     if shorthand == "dm":
-        cm.cells.Mover(vault, tuple(position), relative.rotateval(facing, 1))
+        cm.cells.Mover(vault, tuple(position), 1)
         return
     if shorthand == "lm":
-        cm.cells.Mover(vault, tuple(position), relative.rotateval(facing, 1))
+        cm.cells.Mover(vault, tuple(position), 2)
         return
     if shorthand == "um":
-        cm.cells.Mover(vault, tuple(position), relative.rotateval(facing, 1))
+        cm.cells.Mover(vault, tuple(position), 3)
         return
     if shorthand == "cw":
         cm.cells.CW(vault, tuple(position))

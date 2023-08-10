@@ -1,3 +1,4 @@
+import math
 import cellmachine as cm
 import sys
 import relative
@@ -56,7 +57,6 @@ thrust = length + 4
 lengthFuse = thrust * i
 endofFuse = ner.fuse(lengthFuse, relative.move(facing, 0, corner1, 1, vault), vault, facing)
 boundaries = ner.base_ner(facing, thrust + 1, endofFuse, i, vault)
-print(cm.levelstring.v2.export_level(vault))
 thrustValues = [0 for i in range(len(cells))]
 count = 0
 moverValues = [False for i in range(len(cells))]
@@ -70,10 +70,9 @@ for i in range(len(thrustValues)):
     thrustValues[i] = count
     count = 0
 ner.customthrust(facing, thrustValues, moverValues, boundaries, vault)
-print(cm.levelstring.v2.export_level(vault))
 ner.fill(facing, thrust, cells, [corner1, endofFuse], vault)
 # ALWAYS LEAVE AT BOTTOM
 endTime = time.time() - start_time
-print("Solve took ", endTime ,"s to complete")
-print(cm.levelstring.v1.export_level(vault))
-print("Exporting took ", time.time() - start_time - endTime, "s to complete")
+print("Solve took",math.floor(endTime*1000),"ms to complete")
+print(cm.levelstring.v2.export_level(vault))
+print("Exporting took",math.floor((time.time() - start_time - endTime)*1000),"ms to complete")

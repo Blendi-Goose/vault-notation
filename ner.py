@@ -27,7 +27,7 @@ def base_ner(facing, thrust, pos, length, vault):
         pos = relative.move(facing, 3, pos, 1, vault)
         cm.cells.Trash(vault, tuple(pos))
         pos = relative.move(facing, 1, pos, 2, vault)
-        cm.cells.Generator(vault, tuple(pos), relative.rotateval(facing, 1))
+        cm.cells.Generator(vault, tuple(pos), relative.rotateval(facing, 3))
         pos = relative.move(facing, 1, pos, 1, vault)
         cm.cells.Push(vault, tuple(pos))
         pos = relative.move(facing, 1, pos, 1, vault)
@@ -46,7 +46,7 @@ def base_ner(facing, thrust, pos, length, vault):
         pos = relative.move(facing, 0, pos, 1, vault)
         cm.cells.Push(vault, tuple(pos))
         pos = relative.move(facing, 3, pos, 1, vault)
-        cm.cells.Generator(vault, tuple(pos), relative.rotateval(facing, 1))
+        cm.cells.Generator(vault, tuple(pos), relative.rotateval(facing, 3))
         pos = relative.move(facing, 1, pos, 1, vault)
     #Final Array
     pos = relative.move(facing, 3, pos, 1, vault)
