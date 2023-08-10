@@ -75,5 +75,5 @@ ner.fill(facing, thrust, cells, [corner1, endofFuse], vault)
 # ALWAYS LEAVE AT BOTTOM
 endTime = time.time() - start_time
 print("Solve took ", endTime ,"s to complete")
-print(cm.levelstring.v2.export_level(vault))
+print(cm.levelstring.v1.export_level(vault))
 print("Exporting took ", time.time() - start_time - endTime, "s to complete")
