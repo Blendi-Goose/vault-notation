@@ -1,5 +1,6 @@
 import cellmachine as cm
 import relative
+import list
 
 def fuse(length, firstPush, vault, facing):
     pos = firstPush
@@ -89,11 +90,15 @@ def customthrust(facing, thrustValues, moverValues, corners, vault):
             cm.cells.Mover(vault, tuple(pos), 2 + facing)
         notmyfirsttime = True
         pos = relative.move(facing, 1, pos, 1, vault)
-    print(cm.levelstring.v3.export_level(vault))
     return
 
 def fill(facing, thrust, cells, fusepos, vault):
     start = fusepos[0]
     pos = start
-    relative.move(facing, 0, pos, )
+    pos = relative.move(facing, 0, pos, thrust - 4, vault)
+    for tick in cells:
+        for cell in tick:
+            list.interpret(facing, cell, pos, vault)
+            pos = relative.move(facing, 0, pos, 1, vault)
+        pos = relative.move(facing, 0, pos, thrust - 4, vault)
     return
