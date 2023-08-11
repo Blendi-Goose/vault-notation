@@ -101,18 +101,20 @@ def fill(facing, thrust, cells, fusepos, vault):
     for tick in cells:
         for j, cell in enumerate(tick):
             backtrack = list.interpret(facing, cell, pos, vault)
-            if backtrack[0]:
+            if backtrack[0] or backtrack[1]:
                 J1 = j
                 while True:
                     if j == 0:
                         pos = relative.move(facing, 2, pos, 1, vault)
-                        cm.cells.Mover(vault, tuple(pos), facing)
+                        if backtrack[0]: 
+                            cm.cells.Mover(vault, tuple(pos), facing)
                         backtrack[0] = False
                         j = J1
                         if backtrack[1]:
                             pos = relative.move(facing, 0, pos, thrust - 2, vault)
                             cm.cells.Mover(vault,tuple(pos), relative.rotateval(facing, 2))
                             pos = relative.move(facing, 2, pos, thrust - 2, vault)
+                            backtrack[1] = False
                         pos = relative.move(facing, 0, pos, j + 1, vault)
                         break
                     else:
