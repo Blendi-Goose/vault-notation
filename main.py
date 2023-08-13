@@ -4,14 +4,13 @@ import sys
 import relative
 import ner
 import time
-start_time = time.time()
-
-try: fileCode = sys.argv[1]
+import_time = time.time()
+try: vault = cm.import_level(sys.argv[1])
 except: 
     print("\033[1;31mPlease add a file code inside of quotation marks to the end.\033[0m\n")
     sys.exit()
-vault = cm.import_level(fileCode)
-
+start_time = time.time()
+print("Import took", math.floor((start_time-import_time)*1000), "ms to complete")
 try: vaultNotation = sys.argv[2]
 except: 
     print("\033[1;31mPlease add vault notation inside of quotation marks to the end.\033[0m\n")
@@ -50,21 +49,19 @@ if corner1[1] != corner2[1]:
     if corner1[1] > corner2[1]:
         length =  corner1[1] - corner2[1]
         facing = 1
-print("0 is right, goes clockwise: ",facing)
+relative.orient(facing)
 if onegapontop == 2:
     print("\033[1;31mOne gaps only. One gap on top. No resistance to this policy allowed.\033[0m\n")
     sys.exit()
-trashorpit = vault.cells.get(tuple(relative.move(facing, 2, tuple(corner2), 1, vault))).__class__ == cm.cells.trash.Trash
-print("Trash Vault: " + str(trashorpit))
+trashorpit = vault.cells.get(tuple(relative.move(2, tuple(corner2), 1))).__class__ == cm.cells.trash.Trash
 if trashorpit == False:
     print("Pit vaults not completely supported yet.. good luck?")
 i = 0
 for tick in cells:
-    print(tick) 
     i += 1
 thrust = length + 4
 lengthFuse = thrust * i
-endofFuse = ner.fuse(lengthFuse, relative.move(facing, 0, corner1, 1, vault), vault, facing)
+endofFuse = ner.fuse(lengthFuse, relative.move(0, corner1, 1), vault, facing)
 boundaries = ner.base_ner(facing, thrust + 1, endofFuse, i, vault)
 thrustValues = [0 for i in range(len(cells))]
 count = 0
@@ -79,9 +76,12 @@ for i in range(len(thrustValues)):
     thrustValues[i] = count
     count = 0
 ner.customthrust(facing, thrustValues, moverValues, boundaries, vault)
-ner.fill(facing, thrust, cells, [corner1, endofFuse], vault)
+for i in range(10000):
+    ner.fill(facing, thrust, cells, [corner1, endofFuse], vault)
+
 # time / export: leave at bottom
 endTime = time.time() - start_time
 print("Solve took",math.floor(endTime*1000),"ms to complete")
-print(cm.levelstring.v2.export_level(vault))
+export = cm.levelstring.v2.export_level(vault)
 print("Exporting took",math.floor((time.time() - start_time - endTime)*1000),"ms to complete")
+print(export)
