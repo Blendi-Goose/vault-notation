@@ -76,8 +76,8 @@ for i in range(len(thrustValues)):
     thrustValues[i] = count
     count = 0
 ner.customthrust(facing, thrustValues, moverValues, boundaries, vault)
-for i in range(10000):
-    ner.fill(facing, thrust, cells, [corner1, endofFuse], vault)
+
+ner.fill(facing, thrust, cells, [corner1, endofFuse], vault)
 
 # time / export: leave at bottom
 endTime = time.time() - start_time
